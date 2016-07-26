@@ -15,6 +15,10 @@ module Sendcloud
       self.settings[:api_key]
     end
 
+    def api_url
+      self.settings[:api_url]
+    end
+
     def deliver!(rails_message)
       response = sendcloud_client.send_message build_sendcloud_message_for(rails_message)
       if response.code == 200

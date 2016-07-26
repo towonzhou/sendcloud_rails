@@ -2,11 +2,12 @@ require 'rest_client'
 
 module Sendcloud
   class Client
-    attr_reader :api_key, :domain
+    attr_reader :api_key, :domain, :api_url
 
     def initialize(api_key, domain)
       @api_key = api_key
       @domain = domain
+      @api_url = api_url
     end
 
     def send_message(options)
@@ -14,11 +15,7 @@ module Sendcloud
     end
 
     def sendcloud_url
-      api_url+"/messages"
-    end
-
-    def api_url
-      "http://api.sendcloud.net/apiv2/mail"
+      @api_url
     end
   end
 end
