@@ -18,7 +18,7 @@ To configure your sendcloud credentials place the following code in the correspo
 
 ```ruby
 config.action_mailer.delivery_method = :sendcloud
-config.action_mailer.mailgun_settings = {
+config.action_mailer.sendcloud_settings = {
 		api_user: '<apiUser>',
 		api_key: '<apiKey>',
 		api_url: 'http://api.sendcloud.net/apiv2/mail/send'
