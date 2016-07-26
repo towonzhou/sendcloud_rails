@@ -2,11 +2,9 @@ require 'rest_client'
 
 module Sendcloud
   class Client
-    attr_reader :api_key, :api_user, :api_url
+    attr_reader :api_url
 
-    def initialize(api_key, api_user, api_url)
-      @api_key = api_key
-      @api_user = api_user
+    def initialize(api_url)
       @api_url = api_url
     end
 

@@ -32,7 +32,7 @@ module Sendcloud
 
     def build_sendcloud_message_for(rails_message)
       sendcloud_message = build_basic_sendcloud_message_for rails_message
-      #transform_sendcloud_attributes_from_rails rails_message, sendcloud_message
+      transform_sendcloud_attributes_from_rails rails_message, sendcloud_message
       remove_empty_values sendcloud_message
 
       sendcloud_message
@@ -40,11 +40,13 @@ module Sendcloud
 
     def build_basic_sendcloud_message_for(rails_message)
       sendcloud_message = {
-       from: rails_message[:from].formatted,
-       to: rails_message[:to].formatted,
-       subject: rails_message.subject,
-       html: extract_html(rails_message),
-       text: extract_text(rails_message)
+        apiUser: api_user,
+        apiKey: api_key,
+        from: rails_message[:from].formatted,
+        to: rails_message[:to].formatted,
+        subject: rails_message.subject,
+        html: extract_html(rails_message),
+        text: extract_text(rails_message)
       }
 
       [:cc, :bcc].each do |key|
@@ -90,7 +92,7 @@ module Sendcloud
     end
 
     def sendcloud_client
-      @sendcloud_client ||= Client.new(api_key, api_user, api_url)
+      @sendcloud_client ||= Client.new(api_url)
     end
   end
 end
