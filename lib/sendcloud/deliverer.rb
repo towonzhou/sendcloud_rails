@@ -42,8 +42,8 @@ module Sendcloud
       sendcloud_message = {
         apiUser: api_user,
         apiKey: api_key,
-        from: rails_message[:from].formatted,
-        to: rails_message[:to].formatted,
+        from: rails_message[:from].formatted.join(";"),
+        to: rails_message[:to].formatted.join(";"),
         subject: rails_message.subject,
         html: extract_html(rails_message),
         text: extract_text(rails_message)
