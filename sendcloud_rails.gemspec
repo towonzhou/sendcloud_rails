@@ -1,0 +1,26 @@
+$:.push File.expand_path("../lib", __FILE__)
+
+# Maintain your gem's version:
+require "sendcloud/version"
+
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = "sendcloud_rails"
+  s.version     = Sendcloud::VERSION
+  s.authors     = ["Towon Zhou"]
+  s.email       = ["towonzhou@gmail.com"]
+  s.homepage    = ""
+  s.summary     = "Rails Action Mailer adapter for Sendcloud"
+  s.description = "An adapter for using Sendcloud with Rails and Action Mailer"
+  s.license = 'MIT'
+
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files = Dir["test/**/*"]
+
+  s.add_dependency "actionmailer", ">= 3.2.13"
+  s.add_dependency "json", ">= 1.7.7"
+  s.add_dependency "rest-client", ">= 1.6.7"
+
+  s.add_development_dependency "rspec", '~> 2.14.1'
+  s.add_development_dependency "rails", ">= 3.2.13"
+end
