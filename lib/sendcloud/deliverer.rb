@@ -7,8 +7,8 @@ module Sendcloud
       self.settings = settings
     end
 
-    def domain
-      self.settings[:domain]
+    def api_user
+      self.settings[:api_user]
     end
 
     def api_key
@@ -90,7 +90,7 @@ module Sendcloud
     end
 
     def sendcloud_client
-      @sendcloud_client ||= Client.new(api_key, domain)
+      @sendcloud_client ||= Client.new(api_key, api_user, api_url)
     end
   end
 end
