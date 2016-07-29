@@ -20,7 +20,9 @@ module Sendcloud
     end
 
     def deliver!(rails_message)
-      response = sendcloud_client.send_message build_sendcloud_message_for(rails_message)
+      options = build_sendcloud_message_for(rails_message)
+      response = sendcloud_client.send_message options
+      Rails.logger.info("from:#{options[:from]} to:#{options[:to]} res:#{response}")
       if response.code == 200
         sendcloud_message_id = JSON.parse(response.to_str)["id"]
         rails_message.message_id = sendcloud_message_id
