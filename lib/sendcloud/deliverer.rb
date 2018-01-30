@@ -48,7 +48,7 @@ module Sendcloud
         to: rails_message[:to].formatted.join(";"),
         subject: rails_message.subject,
         html: extract_html(rails_message),
-        text: extract_text(rails_message)
+        plain: extract_text(rails_message)
       }
 
       [:cc, :bcc].each do |key|
@@ -67,7 +67,7 @@ module Sendcloud
     def transform_reply_to(rails_message, sendcloud_message)
       sendcloud_message['h:Reply-To'] = rails_message[:reply_to].formatted.first
     end
-    
+
     def transform_label_id(rails_message, sendcloud_message)
       id = label_id(rails_message)
       sendcloud_message['labelId'] = id if id
@@ -102,11 +102,11 @@ module Sendcloud
     def sendcloud_client
       @sendcloud_client ||= Client.new(api_url)
     end
-    
+
     def label_id rails_message
       rails_message.header.fields.find { |f| f.name == 'label-id' }.try :value
     end
-    
+
   end
 end
 
