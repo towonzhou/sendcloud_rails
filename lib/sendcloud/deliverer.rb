@@ -49,7 +49,7 @@ module Sendcloud
         subject: rails_message.subject,
         html: extract_html(rails_message),
         plain: extract_text(rails_message),
-        fromName: rails_message['form-name']
+        fromName: rails_message['from-name']
       }
 
       [:cc, :bcc].each do |key|
