@@ -48,7 +48,8 @@ module Sendcloud
         to: rails_message[:to].formatted.join(";"),
         subject: rails_message.subject,
         html: extract_html(rails_message),
-        plain: extract_text(rails_message)
+        plain: extract_text(rails_message),
+        fromName: rails_message['form-name']
       }
 
       [:cc, :bcc].each do |key|
